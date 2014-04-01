@@ -140,7 +140,7 @@ module Sidekiq
       proctitle << "[#{@busy.size} of #{data['concurrency']} busy]"
       proctitle << 'stopping' if stopped?
       $0 = proctitle.join(' ')
-      ❤(key)
+      _heartbeat(key)
       after(5) do
         heartbeat(key, data)
       end
@@ -148,7 +148,7 @@ module Sidekiq
 
     private
 
-    def ❤(key)
+    def _heartbeat(key)
       begin
         Sidekiq.redis do |conn|
           conn.multi do
