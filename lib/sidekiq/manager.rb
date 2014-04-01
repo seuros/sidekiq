@@ -139,7 +139,7 @@ module Sidekiq
       proctitle << 'stopping' if stopped?
       $0 = proctitle.join(' ')
 
-      ❤(key, json)
+      _heartbeat(key,json)
       after(5) do
         heartbeat(key, data, json)
       end
@@ -147,7 +147,7 @@ module Sidekiq
 
     private
 
-    def ❤(key, json)
+    def _heartbeat(key, json)
       begin
         _, _, _, msg = Sidekiq.redis do |conn|
           conn.multi do
