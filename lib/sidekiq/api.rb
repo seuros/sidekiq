@@ -239,7 +239,7 @@ module Sidekiq
     end
 
     def enqueued_at
-      Time.at(@item['enqueued_at'] || 0).utc
+      Time.at(@item['enqueued_at'].to_f).utc
     end
 
     def queue
