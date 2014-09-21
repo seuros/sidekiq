@@ -27,7 +27,7 @@ Requirements
 I test with the latest MRI (2.1, 2.0) and JRuby versions (1.7).  Other versions/VMs
 are untested but might work fine.  MRI 1.9 is no longer supported.
 
-All Rails releases (3.2 and 4.(0-2)) are officially supported.
+All Rails releases starting from 3.2 are officially supported.
 
 Redis 2.4 or greater is required.
 
