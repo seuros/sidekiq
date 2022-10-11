@@ -11,14 +11,13 @@ def integrate_with_systemd
 
   Sidekiq.configure_server do |config|
     config.logger.info "Enabling systemd notification integration"
-    require "sidekiq/sd_notify"
     config.on(:startup) do
-      Sidekiq::SdNotify.ready
+      SdNotify.ready
     end
     config.on(:shutdown) do
-      Sidekiq::SdNotify.stopping
+      SdNotify.stopping
     end
-    Sidekiq.start_watchdog if Sidekiq::SdNotify.watchdog?
+    Sidekiq.start_watchdog if SdNotify.watchdog?
   end
 end
 
